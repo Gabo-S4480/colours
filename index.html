@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <section>
-        <h2>BackgroundColour <span id="box-colour"></span></h2>
+        <h2>Background colour <span id="box-colour">Red</span></h2>
 
-        <button id="btn-change-colour">Click me </button>
-
-
+        <button id="change-colour">click me</button>
     </section>
+
     <script>
 
-        const btnchangeColour =document.getElementById('change-colour');
-        const boxColour =document.getElementById('box-colour');
+        const btnchangeColour = document.getElementById('change-colour');
+        const boxDisplay = document.getElementById('box-colour'); // Corregido: antes decía box-Display
+        const BigSection = document.querySelector('section');
+
 
         btnchangeColour.addEventListener('click', () => {
-            const arrColours = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
-            let strhexolour = '#';
+            let strhexcolour = '#';
 
+            // Agregado el '0' para que el color sea válido
+            const arrHex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+            
             for (let i = 0; i < 6; i++) {
-                const randomIndex = Math.floor(Math.random() * arrColours.length);
-                strhexolour += arrColours[randomIndex];
+                strhexcolour += arrHex[getRandomNumber(arrHex.length)];
             }
-            boxColour.textContent = strhexolour;
-            document.body.style.backgroundColor = strhexolour;
-
+            
+            boxDisplay.innerText = strhexcolour;
+            BigSection.style.backgroundColor = strhexcolour;
         });
-        //Generate random number in range from 0 to max -1
+
+
+        // Generate random number in range from 0 to max-1
         function getRandomNumber(max) {
             return Math.floor(Math.random() * max);
         }
+
     </script>
-    
+
 </body>
+
 </html>
